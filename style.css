@@ -1,0 +1,84 @@
+/* styles.css */
+
+body {
+    margin: 0;
+    font-family: "Pixelify Sans", sans-serif;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #87CEEB; /* Fondo azul estilo cielo */
+}
+
+#gameArea {
+    background-image: url("./fondo.png");
+    background-size: 200px;
+    position: relative;
+    width: 400px;
+    height: 600px;
+    background-color: #008000; /* Fondo verde estilo pasto */
+    overflow: hidden;
+    border: 2px solid #000;
+}
+
+#player {
+    background-image: url("./oso.gif");
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-size: cover; /* Color del jugador */
+    bottom: 10px;
+    left: 175px; /* Centramos el jugador inicialmente */
+}
+
+#obstacle {
+    background-image: url("./frailejon.png");
+    background-size: cover;
+    position: absolute;
+    width: 80px;
+    height: 80px; /* Color del obstáculo */
+    top: 0px;
+    left: 175px;
+}
+
+#score {
+    position: absolute;
+    color: rgb(57, 22, 100);
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-weight: bold;
+}
+
+#reset {
+    position: absolute;
+    color: white;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 300px;
+    background-color: blue;
+    font-family: "Pixelify Sans", sans-serif;
+    border-radius: 8px;
+    padding: 0.3em;
+}
+
+#play {
+    position: absolute;
+    color: white;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 150px;
+    background-color: rgb(255, 0, 60);
+    font-family: "Pixelify Sans", sans-serif;
+    padding: 0.3em;
+    border-radius: 8px;
+}
+
+

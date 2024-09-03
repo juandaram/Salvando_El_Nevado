@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Carreras</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+   <!--  <input type="text" placeholder="NOMBRE DE JUGADOR"> -->
+    <div id="gameArea">
+        <div id="player"></div>
+        <div id="obstacle"></div>
+        <div>
+            <div id="score">Score: 0</div>
+            <button id="reset" onclick=reiniciarJuego()>RESET</button>
+            <button id="play" onclick=play()>JUGAR</button>
+        </div>
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+<script>
+    // script.js
+
+const gameArea = document.getElementById('gameArea');
+const player = document.getElementById('player');
+const obstacle = document.getElementById('obstacle');
+const scoreDisplay = document.getElementById('score');
+
+let score = 0;
+let gameSpeed = 5;
+let gameOver = false;
+
+function moveObstacle() {
+    let obstacleTop = parseInt(window.getComputedStyle(obstacle).getPropertyValue('top'));
+    obstacle.style.top = obstacleTop + gameSpeed + 'px';
+
+    if (obstacleTop >= 600) {
+        // Si el obstáculo sale del área de juego, se reinicia en la parte superior
+        obstacle.style.top = '-50px';
+        obstacle.style.left = Math.floor(Math.random() * 350) + 'px';
+        score++;
+        scoreDisplay.textContent = `Score: ${score}`;
+        gameSpeed += 0.1; // Incrementa la velocidad del juego gradualmente
+    }
+}
+
+function checkCollision() {
+    const playerRect = player.getBoundingClientRect();
+    const obstacleRect = obstacle.getBoundingClientRect();
+
+    if (
+        playerRect.x < obstacleRect.x + obstacleRect.width &&
+        playerRect.x + playerRect.width > obstacleRect.x &&
+        playerRect.y < obstacleRect.y + obstacleRect.height &&
+        playerRect.y + playerRect.height > obstacleRect.y
+    ) {
+        gameOver = true;
+        alert('¡Juego terminado! Puntaje final: ' + score);
+        window.location.reload();
+    }
+}
+
+function movePlayer(event) {
+    const playerLeft = parseInt(window.getComputedStyle(player).getPropertyValue('left'));
+
+    if (event.key === 'ArrowLeft' && playerLeft > 0) {
+        player.style.left = playerLeft - 20 + 'px';
+    } else if (event.key === 'ArrowRight' && playerLeft < 350) {
+        player.style.left = playerLeft + 20 + 'px';
+    }
+}
+
+function gameLoop() {
+    if (!gameOver) {
+        moveObstacle();
+        checkCollision();
+        requestAnimationFrame(gameLoop);
+    }
+}
+
+function increaseSpeed() {
+    setInterval(() => {
+        if (!gameOver) {
+            gameSpeed += 2; // Aumenta la velocidad en 2
+            console.log(`Velocidad aumentada a: ${gameSpeed}`);
+        }
+    }, 10000); // Cada 15 segundos
+}
+
+function reiniciarJuego() {
+    window.location.reload();
+}
+
+document.addEventListener('keydown', movePlayer);
+
+function play(){
+    requestAnimationFrame(gameLoop);
+}
+
+increaseSpeed();
+
+
+
+</script>
+</html>
