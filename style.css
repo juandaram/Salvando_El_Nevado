@@ -7,27 +7,51 @@ body {
     overflow: hidden;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     height: 100vh;
-    background-color: #87CEEB; /* Fondo azul estilo cielo */
+    background-color: #9069b0;
+    opacity: 1;
+    background-image:  linear-gradient(30deg, #a079c5 12%, transparent 12.5%, transparent 87%, #a079c5 87.5%, #a079c5), linear-gradient(150deg, #a079c5 12%, transparent 12.5%, transparent 87%, #a079c5 87.5%, #a079c5), linear-gradient(30deg, #a079c5 12%, transparent 12.5%, transparent 87%, #a079c5 87.5%, #a079c5), linear-gradient(150deg, #a079c5 12%, transparent 12.5%, transparent 87%, #a079c5 87.5%, #a079c5), linear-gradient(60deg, #a079c577 25%, transparent 25.5%, transparent 75%, #a079c577 75%, #a079c577), linear-gradient(60deg, #a079c577 25%, transparent 25.5%, transparent 75%, #a079c577 75%, #a079c577);
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    
 }
 
+h1{
+    color: white;
+}
+.gamebox{
+    margin: 0 auto;
+    background-color: rgb(120, 78, 120);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    border-radius: 30px;
+    padding: 2em;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background: rgba( 255, 255, 255, 0.25 );box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );backdrop-filter: blur( 4px );-webkit-backdrop-filter: blur( 4px );border-radius: 10px;border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
 #gameArea {
     background-image: url("./fondo.png");
     background-size: 200px;
     position: relative;
     width: 400px;
     height: 600px;
-    background-color: #008000; /* Fondo verde estilo pasto */
+    background-color: #060080; /* Fondo verde estilo pasto */
     overflow: hidden;
-    border: 2px solid #000;
+    border: 5px dotted #4b166c;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 #player {
     background-image: url("./oso.gif");
     position: absolute;
     width: 80px;
-    height: 80px;
+    height: 100px;
     background-size: cover; /* Color del jugador */
     bottom: 10px;
     left: 175px; /* Centramos el jugador inicialmente */
@@ -48,7 +72,7 @@ body {
     color: rgb(57, 22, 100);
     top: 10px;
     left: 10px;
-    font-size: 20px;
+    font-size: 28px;
     font-family: "Pixelify Sans", sans-serif;
     font-weight: bold;
 }
@@ -81,4 +105,62 @@ body {
     border-radius: 8px;
 }
 
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 60px;
+}
 
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 500px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.play-button {
+    background-color: #792765;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-size: 25px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    font-family: "Pixelify Sans", sans-serif;
+    transition: 300ms ease;
+}
+
+.play-button:hover{
+    transform: translateY(-10px);
+    transition: 300ms ease ;
+    background-color: #cb30c6;
+}
